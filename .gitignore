@@ -1,0 +1,16 @@
+*.pyc
+
+.env
+.coverage
+
+.sass-cache/
+bower_components/
+_build/
+htmlcov/
+media-root/
+media/
+mysql-data/
+node_modules/
+static-root/
+
+npm-debug.log
