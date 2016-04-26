@@ -1,5 +1,7 @@
 import json
 from pprint import pprint
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
 
 from .models import Product, ProductImage, Offers, OffersOrigins
 
@@ -8,14 +10,21 @@ def insert_offers(product, item):
     product_key = product.id
     offer, created = Offers.objects.get_or_create(original_id=original_id, product_id=product_key)
 
-    # pprint(original_id)
-
     offer.title = item.get('title')
     offer.description = item.get('description')
     offer.daily = item.get('daily')
     offer.price = item.get('price')
 
     offer.save()
+
+def insert_photos(product, item):
+    photo = ProductImage()
+
+    name = item.split('/')[-1]
+    photo.product = product
+    photo.image = File(open(item))
+
+    photo.save()
 
 def insert_product(item):
     original_id = item.get('id')
@@ -25,9 +34,12 @@ def insert_product(item):
     product.location = item.get('location')
     product.description = item.get('description')
 
-    for furfles in item.get('options'):
-        # pprint(furfles)
-        insert_offers(product, furfles)
+    for offer in item.get('options'):
+        insert_offers(product, offer)
+
+    for image in item.get('photos'):
+        # pprint(image)
+        insert_photos(product, image)
 
     product.save()
 
