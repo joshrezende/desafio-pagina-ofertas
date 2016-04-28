@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lista de Ofertas</title>
+    </head>
+    <body>
+        <section class="content">
+            <div class="container">
+                <ul class="list">
+                    {% for item in products %}
+                    <li class="item">
+                        <a href="/home/{{item.id}}/">
+                            {{item.title}}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </body>
+</html>
