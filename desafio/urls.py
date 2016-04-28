@@ -11,7 +11,11 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += patterns('django.views.static',
-                            (r'media/(?P<path>.*)', 'serve', {'document_root': settings.MEDIA_ROOT,
-                                                              'show_indexes': True}),)
+    urlpatterns += patterns('',
+        url(r'^prod_images/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.PROD_IMAGES,
+        }),
+        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.STATIC_ROOT,
+        }),
+)
