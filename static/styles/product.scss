@@ -1,0 +1,280 @@
+@import "core";
+@import "libs/custom-select";
+
+$color1: #323232;
+$color2: #656565;
+
+.product-header {
+    padding: 35px 0 60px;
+
+    .container {
+        margin: 0 auto;
+        padding: 0 10px;
+        width: 960px;
+    }
+
+    .title {
+        color: $color1;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 35px;
+    }
+
+    .location {
+        color: $color2;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+    }
+
+    .description {
+        color: $color2;
+        font-size: 14px;
+        font-weight: 200;
+        line-height: 20px;
+    }
+}
+
+.gallery-showcase {
+    margin: 0 0 50px;
+
+    &:after {
+        clear: both;
+        content: "";
+        display: block;
+    }
+
+    .container {
+        margin: 0 auto;
+        width: 960px;
+    }
+
+    .highlight-image {
+        background: #f0f;
+        padding: 39.361702% 0 0;
+        margin: 0 auto;
+        position: relative;
+        width: calc(100% - 20px);
+    }
+
+    .thumbs-list {
+        padding: 5px 7.5px 0;
+
+        .item {
+            cursor: pointer;
+            float: left;
+            height: 60px;
+            margin: 0 2.5px;
+            overflow: hidden;
+            position: relative;
+            width: calc(10% - 5px);
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+
+        .image {
+            display: block;
+            height: 100%;
+            left: 50%;
+            top: 50%;
+            position: relative;
+            transform: translate(-50%, -50%);
+            width: auto;
+        }
+    }
+}
+
+.offer-container {
+    .container {
+        margin: 0 auto;
+        padding: 0 10px;
+        width: 960px;
+    }
+
+    .tools {
+        border-bottom: #e4e4e4 solid 1px;
+        margin: 0 0 30px;
+        padding: 10px 0;
+
+        &:after {
+            clear: both;
+            content: "";
+            display: block;
+        }
+
+        .title {
+            color: $color1;
+            font-size: 24px;
+            font-weight: 800;
+            float: left;
+            line-height: 24px;
+            text-transform: uppercase;
+            width: 50%;
+        }
+
+        .selects-container {
+            float: left;
+            width: 50%;
+            text-align: right;
+
+            .item {
+                display: inline-block;
+                width: 49%;
+            }
+
+            label {
+                color: $color2;
+                font-size: 10px;
+                text-transform: uppercase;
+            }
+
+            .custom-select {
+                border: #d9d9d9 solid 1px;
+                border-radius: 2px;
+                display: inline-block;
+                margin: 0 0 0 10px;
+
+                &:after {
+                    border-left: #e6e6e6 solid 1px;
+                    color: #ff830b;
+                    content: "\25BE";
+                    font-size: 20px;
+                    height: 100%;
+                    line-height: 27px;
+                    top: 0;
+                    right: 0;
+                    text-align: center;
+                    width: 25px;
+                }
+
+                select {
+                    font-size: 12px;
+                    height: 26px;
+                    padding:0 40px 0 5px;
+                }
+            }
+        }
+    }
+}
+
+.offer-list {
+    .item {
+        align-items: stretch;
+        align-content: stretch;
+        border: #d9d9d9 solid 1px;
+        border-radius: 2px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin: 0 0 20px;
+
+        .offer-desc {
+            border-right: #d9d9d9 solid 1px;
+            padding: 15px 10px;
+            width: 40%;
+
+            .title {
+                color: $color1;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 22px;
+                margin: 0 0 15px;
+            }
+
+            .description {
+                color: $color2;
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+
+        .origin {
+            border-right: #d9d9d9 solid 1px;
+            padding: 15px 20px;
+            width: 17.5%;
+
+            .title {
+                color: $color1;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 22px;
+                margin: 0 0 15px;
+            }
+
+            .origin-list {
+                .origin-item {
+                    color: $color2;
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+            }
+        }
+
+        .dailys-people {
+            border-right: #d9d9d9 solid 1px;
+            padding: 15px 20px;
+            text-align: center;
+            width: 17.5%;
+        }
+
+        .price-box {
+            padding: 15px 10px;
+            text-align: center;
+            width: 25%;
+
+            .offer-type {
+                font-size: 12px;
+                font-weight: 100;
+                line-height: 14px;
+                margin: 0 0 20px;
+
+                &.free-cancel {
+                    color:#48a227;
+                }
+
+                &.no-return {
+                    color:#f6ab12;
+                }
+            }
+
+            .only {
+                color: $color2;
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .price {
+                color: $color1;
+                font-size: 28px;
+                font-weight: 800;
+
+                .currency {
+                    font-size: 16px;
+                    line-height: 16px;
+                }
+            }
+
+            .obs {
+                color: $color2;
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .button-lead {
+                color: #fff;
+                display: inline-block;
+                background: #ff7a01;
+                border: none;
+                border-radius: 2px;
+                font-size: 14px;
+                font-weight: 800;
+                margin: 15px 0 0;
+                padding: 5px 35px;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
