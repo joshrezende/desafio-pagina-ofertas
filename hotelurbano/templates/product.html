@@ -1,8 +1,11 @@
+{% load staticfiles humanize l10n %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>{{product.title}}</title>
+        <link rel="stylesheet" href="{% static 'css/product.css' %}" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     </head>
     <body>
         <header class="product-header">
@@ -22,7 +25,7 @@
                 <ul class="thumbs-list">
                     {% for image in images %}
                     <li class="item">
-                        <img src="{{image.image.url}}" class="image" alt="" />
+                        <img src="/{{image.image.url}}" class="image" alt="" />
                     </li>
                     {% endfor %}
                 </ul>
@@ -35,18 +38,22 @@
                         Escolha sua melhor opção
                     </p>
                     <div class="selects-container">
-                        <p class="item">
+                        <div class="item">
                             <label for="from">saídas</label>
-                            <select class="select-field" name="from">
-
-                            </select>
-                        </p>
-                        <p class="item">
+                            <div class="custom-select">
+                                <select class="select-field" name="from">
+                                    <option value="">Escolha</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item">
                             <label for="dailys">nº de diárias</label>
-                            <select class="select-field" name="dailys">
-
-                            </select>
-                        </p>
+                            <div class="custom-select">
+                                <select class="select-field" name="dailys">
+                                    <option value="">Escolha</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <ul class="offer-list">
@@ -67,7 +74,7 @@
 
                             <ul class="origin-list">
                                 {% for origin in offer.offerorigin.all %}
-                                <li class="item">
+                                <li class="origin-item">
                                     {{origin.origin_name}}
                                 </li>
                                 {% endfor %}
@@ -75,25 +82,27 @@
                         </div>
                         <div class="dailys-people">
                             <p class="dailys">
-                                {{offer.daily}}
+                                <span class="value">{{offer.daily}}</span>
+                                <span class="text">Diárias</span>
                             </p>
                             <p class="people">
-                                1
+                                <span class="value">1</span>
+                                <span class="text">Pessoa</span>
                             </p>
                         </div>
                         <div class="price-box">
                             <p class="offer-type">
-
+                                $ Tarifa não reembolsável
                             </p>
                             <p class="only">
                                 Por apenas
                             </p>
                             <p class="price">
                                 <span class="currency">R$</span>
-                                {{offer.price}}
+                                {{offer.price|intcomma|unlocalize}}
                             </p>
                             <p class="obs">
-                                + tavax em até 10x
+                                + taxas em até 10x
                             </p>
                             <a href="#" class="button button-lead">quero ir</a>
                         </div>
