@@ -15,6 +15,10 @@ def insert_offers(product, item):
     offer.daily = item.get('daily')
     offer.price = item.get('price')
 
+    for origin in item.get('from'):
+        # pprint(origin)
+        insert_origins(offer, origin)
+
     offer.save()
 
 def insert_photos(product, item):
@@ -25,6 +29,15 @@ def insert_photos(product, item):
     photo.image = File(open(item))
 
     photo.save()
+
+def insert_origins(offer2, item):
+    origin = OffersOrigins()
+    origin.offer = offer2
+
+    origin.origin_name = item
+
+    origin.save()
+
 
 def insert_product(item):
     original_id = item.get('id')
