@@ -17,7 +17,7 @@ class ProductImage(models.Model):
     image = models.ImageField(upload_to='prod_images/')
 
 class Offers(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='offers')
     original_id = models.IntegerField(default=0)
     title = models.CharField(max_length=250)
     description = models.CharField(max_length=1000)
@@ -30,3 +30,6 @@ class Offers(models.Model):
 class OffersOrigins(models.Model):
     offer = models.ForeignKey(Offers, on_delete=models.CASCADE, related_name='offerorigin')
     origin_name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.origin_name
