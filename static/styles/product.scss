@@ -185,6 +185,10 @@ $color2: #656565;
             border-color: #f6ab12;
         }
 
+        &.hide {
+            display: none;
+        }
+
         .offer-desc {
             border-right: #d9d9d9 solid 1px;
             padding: 15px 10px;

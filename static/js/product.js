@@ -52,6 +52,11 @@ HU.OfferList.prototype = {
         var that = this;
 
         this.makeOriginList(that.elements.items);
+        this.makeDailyList(that.elements.items);
+
+        this.elements.fromSelect.on('change', function(){
+            that.filterList('origin', $(this).val());
+        });
     },
     makeOriginList: function(list){
         var that = this;
@@ -76,6 +81,47 @@ HU.OfferList.prototype = {
         .map(function(item, index){
             that.elements.fromSelect.append('<option value="'+slugifier(item)+'">'+item+'</option>')
         });
+    },
+    makeDailyList: function(list){
+        var that = this;
+        var dailysList = [];
+
+        list.map(function(index, item){
+            dailysList.push(parseInt($(item).attr('data-daily')));
+        });
+
+        dailysList.filter(unique)
+        .sort(function(a,b){
+            return a - b;
+        })
+        .map(function(item, index){
+            that.elements.dailySelect.append('<option value="'+slugifier(item)+'">'+item+'</option>')
+        });
+    },
+    filterList: function(type, value){
+        if(value == 'all'){
+            this.elements.items.removeClass('hide');
+            return;
+        }
+
+        this.elements.items
+            .map(function(index, item){
+                return item;
+            })
+            .filter(function(index, item){
+                var string = $(item).attr('data-origins');
+                var regex = new RegExp(value, 'g');
+                var result = regex.test(string);
+
+                if(result){
+                    $(item).removeClass('hide');
+                } else {
+                    $(item).addClass('hide')
+                }
+
+                return !result;
+
+            });
     }
 };
 
