@@ -1,4 +1,4 @@
-{% load staticfiles humanize l10n %}
+{% load staticfiles humanize i18n %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +20,7 @@
         <div class="gallery-showcase">
             <div class="container">
                 <div class="highlight-image">
-
+                    <img src="" class="image" alt="" />
                 </div>
                 <ul class="thumbs-list">
                     {% for image in images %}
@@ -41,16 +41,16 @@
                         <div class="item">
                             <label for="from">saídas</label>
                             <div class="custom-select">
-                                <select class="select-field" name="from">
-                                    <option value="">Escolha</option>
+                                <select id="from-select" class="select-field" name="from">
+                                    <option value="all">Escolha</option>
                                 </select>
                             </div>
                         </div>
                         <div class="item">
                             <label for="dailys">nº de diárias</label>
                             <div class="custom-select">
-                                <select class="select-field" name="dailys">
-                                    <option value="">Escolha</option>
+                                <select id="daily-select" class="select-field" name="dailys">
+                                    <option value="all">Escolha</option>
                                 </select>
                             </div>
                         </div>
@@ -71,7 +71,6 @@
                             <p class="title">
                                 Saídas
                             </p>
-
                             <ul class="origin-list">
                                 {% for origin in offer.offerorigin.all %}
                                 <li class="origin-item">
@@ -99,7 +98,7 @@
                             </p>
                             <p class="price">
                                 <span class="currency">R$</span>
-                                {{offer.price|intcomma|unlocalize}}
+                                {{offer.price|intcomma}}
                             </p>
                             <p class="obs">
                                 + taxas em até 10x
@@ -111,5 +110,7 @@
                 </ul>
             </div>
         </div>
+        <script src="{% static 'js/jquery-2.2.3.min.js' %}" charset="utf-8"></script>
+        <script src="{% static 'js/product.js' %}" charset="utf-8"></script>
     </body>
 </html>
