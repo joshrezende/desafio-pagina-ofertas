@@ -171,6 +171,9 @@ $color2: #656565;
 }
 
 .offer-list {
+    display: inline-flex;
+    flex-flow: row wrap;
+
     .item {
         align-items: stretch;
         align-content: stretch;
@@ -180,13 +183,28 @@ $color2: #656565;
         flex-direction: row;
         justify-content: flex-start;
         margin: 0 0 20px;
+        position: relative;
+        transition: border 300ms, opacity 400ms;
+        width: 100%;
 
-        &:hover {
+        &:not(.disabled):hover {
             border-color: #f6ab12;
         }
 
-        &.hide {
-            display: none;
+        &.disabled {
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                // background: #f0f;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: 0;
+            }
+
+            order: 2;
+            opacity: 0.4;
         }
 
         .offer-desc {

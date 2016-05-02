@@ -100,7 +100,7 @@ HU.OfferList.prototype = {
     },
     filterList: function(type, value){
         if(value == 'all'){
-            this.elements.items.removeClass('hide');
+            this.elements.items.removeClass('disabled');
             return;
         }
 
@@ -114,9 +114,9 @@ HU.OfferList.prototype = {
                 var result = regex.test(string);
 
                 if(result){
-                    $(item).removeClass('hide');
+                    $(item).removeClass('disabled');
                 } else {
-                    $(item).addClass('hide')
+                    $(item).addClass('disabled')
                 }
 
                 return !result;
