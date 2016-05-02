@@ -24,6 +24,9 @@ class Offers(models.Model):
     daily = models.IntegerField(default=0)
     price = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ('price', 'product__title')
+
     def __str__(self):
         return self.title
 
