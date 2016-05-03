@@ -8,6 +8,7 @@ HU.Showcase = function(){
     this.elements.highlightImage = this.elements.container.find('.highlight-image img');
     this.elements.list = this.elements.container.find('.thumbs-list');
     this.elements.items = this.elements.list.find('.item');
+    this.currentIndex = 0;
     this.imgUrls = this.elements.items.map(function(index, item){
         var src = $(item).find('img').attr('src');
         return src;
@@ -19,12 +20,24 @@ HU.Showcase = function(){
 HU.Showcase.prototype = {
     bind: function(){
         var that = this;
+        var btnNext = this.elements.container.find('.btn-next');
+        var btnPrev = this.elements.container.find('.btn-prev');
 
         that.elements.highlightImage.attr('src', that.imgUrls[0]);
 
         this.elements.items.on('click', function(){
             var index = $(this).index();
+            that.currentIndex = index;
             that.setHighlight(index);
+        });
+
+
+        btnNext.on('click', function(){
+            that.next();
+        });
+
+        btnPrev.on('click', function(){
+            that.prev();
         });
 
     },
@@ -33,6 +46,28 @@ HU.Showcase.prototype = {
         var imgSrc = that.imgUrls[index];
 
         that.elements.highlightImage.attr('src', imgSrc);
+    },
+    next: function(){
+        var that = this;
+
+        if (that.currentIndex < (that.imgUrls.length - 1)){
+            that.currentIndex = that.currentIndex + 1;
+        } else {
+            that.currentIndex = 0;
+        }
+
+        that.setHighlight(that.currentIndex);
+    },
+    prev: function(){
+        var that = this;
+
+        if (that.currentIndex > 0){
+            that.currentIndex = that.currentIndex - 1;
+        } else {
+            that.currentIndex = that.imgUrls.length -1;
+        }
+
+        that.setHighlight(that.currentIndex);
     }
 };
 
@@ -56,6 +91,10 @@ HU.OfferList.prototype = {
 
         this.elements.fromSelect.on('change', function(){
             that.filterList('origin', $(this).val());
+        });
+
+        this.elements.dailySelect.on('change', function(){
+            that.filterList('daily', $(this).val());
         });
     },
     makeOriginList: function(list){
@@ -95,7 +134,7 @@ HU.OfferList.prototype = {
             return a - b;
         })
         .map(function(item, index){
-            that.elements.dailySelect.append('<option value="'+slugifier(item)+'">'+item+'</option>')
+            that.elements.dailySelect.append('<option value="'+item+'">'+item+'</option>')
         });
     },
     filterList: function(type, value){
@@ -104,7 +143,8 @@ HU.OfferList.prototype = {
             return;
         }
 
-        this.elements.items
+        if(type == 'origin'){
+            this.elements.items
             .map(function(index, item){
                 return item;
             })
@@ -122,6 +162,24 @@ HU.OfferList.prototype = {
                 return !result;
 
             });
+        }
+
+        if(type == 'daily'){
+            this.elements.items
+            .map(function(index, item){
+                return item;
+            })
+            .filter(function(index, item){
+                var daily = parseInt($(item).attr('data-daily'));
+
+                if(value == daily){
+                    $(item).removeClass('disabled');
+                } else {
+                    $(item).addClass('disabled')
+                }
+            });
+        }
+
     }
 };
 

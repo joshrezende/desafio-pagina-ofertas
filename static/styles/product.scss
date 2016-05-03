@@ -65,6 +65,45 @@ $color2: #656565;
             transform: translate(-50%, -50%);
             width: 100%;
         }
+
+        .btn-nav {
+            background: rgba(0,0,0,0.6);
+            cursor: pointer;
+            display: block;
+            height: 70px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+
+            &:before {
+                content: "";
+                border-bottom: solid #fff 2px;
+                border-right: solid #fff 2px;
+                display: block;
+                height: 20px;
+                width: 20px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                // transform: translate(-50%,-50%);
+            }
+
+            &.btn-prev {
+                left: 0;
+
+                &:before {
+                    transform: rotate(135deg) translate(-10%, 45%);
+                }
+            }
+
+            &.btn-next {
+                right: 0;
+                &:before {
+                    transform: rotate(-45deg) translate(-25%, -85%);
+                }
+            }
+        }
     }
 
     .thumbs-list {
@@ -254,6 +293,14 @@ $color2: #656565;
             padding: 15px 20px;
             text-align: center;
             width: 17.5%;
+
+            .text {
+                color: $color1;
+                display: block;
+                font-size: 11px;
+                font-weight: 200;
+                line-height: 14px;
+            }
         }
 
         .price-box {
