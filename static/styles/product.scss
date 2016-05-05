@@ -294,12 +294,45 @@ $color2: #656565;
             text-align: center;
             width: 17.5%;
 
+            .people {
+              margin: 10px 0 0;
+              padding: 10px 0 0;
+              position: relative;
+
+              &:after {
+                background: #555;
+                content: "";
+                display: block;
+                height: 1px;
+                left: 50%;
+                margin-left: -5px;
+                position: absolute;
+                top: 0;
+                width: 10px;
+              }
+            }
+
+            .value {
+              font-size: 22px;
+              line-height: 22px;
+              text-align: left;
+
+              &:after {
+                background: #ccc;
+                content: "";
+                display: inline-block;
+                height: 15px;
+                margin: 0 0 0 5px;
+                width: 15px;
+              }
+            }
+
             .text {
                 color: $color1;
                 display: block;
                 font-size: 11px;
                 font-weight: 200;
-                line-height: 14px;
+                line-height: 12px;
             }
         }
 

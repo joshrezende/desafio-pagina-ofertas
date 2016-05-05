@@ -3,9 +3,10 @@ from django.conf.urls import include, url, patterns
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from hotelurbano import views
 
 urlpatterns = [
-    url(r'^home/', include('hotelurbano.urls')),
+    url(r'^', include('hotelurbano.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^nested_admin/', include('nested_admin.urls')),
 ]
