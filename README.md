@@ -4,8 +4,7 @@
 ***Instruções***
 
 
->1. *git clone seu-fork*
-2. *cd seu-fork*
-3. *virtualenv 'nomedasuapreferencia'*
-4. *source nomedasuapreferencia/bin/activate || workon nomedasuapreferencia*
-5. *./manage.py runserver*
+>1. *git clone*
+2. *make venv*
+3. *make run*
+4. *localhost:8000*
